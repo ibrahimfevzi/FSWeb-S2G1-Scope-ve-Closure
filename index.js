@@ -183,8 +183,48 @@ MAÇ UZAR ise skorTabelasi(periyotSkoru,takimSkoru,4)
 ] */
 // NOTE: Bununla ilgili bir test yoktur. Eğer logladığınız sonuçlar yukarıdakine benziyor ise tmamlandı sayabilirsiniz.
 
-function skorTabelasi(/*Kodunuzu buraya yazınız*/) {
-  /*Kodunuzu buraya yazınız*/
+function skorTabelasi(periyotSkoru, takimSkoru, ceyrekSayisi) {
+  // Ev Sahibi ve Konuk Takımın ilk skorlarını belirlendi.
+  let evSahibiSkor = 0;
+  let konukTakimSkor = 0;
+  
+  // Maç sonucunu hesaplamak için toplam skorları tutacak iki değişken oluşturuldu.
+  let toplamEvSahibiSkoru = 0;
+  let toplamKonukTakimSkoru = 0;
+
+  // Sonuçları depolamak için bir dizi oluşturuldu.
+  let sonuclar = [];
+
+  // Her bir çeyrek için döngü oluşturuldu.
+  for (let i = 1; i <= ceyrekSayisi; i++) {
+    // Her bir çeyrekte Ev Sahibi ve Konuk Takımın attığı skorlar hesaplandı.
+    let evSahibiCeyrekSkoru = takimSkoru[i - 1];
+    let konukTakimCeyrekSkoru = takimSkoru[i - 1];
+
+    // Toplam skorları güncellendi.
+    toplamEvSahibiSkoru += evSahibiCeyrekSkoru;
+    toplamKonukTakimSkoru += konukTakimCeyrekSkoru;
+
+    // Bu çeyreğin sonucu sonuçlar dizisine eklendi.
+    sonuclar.push(
+      `${i}. Periyot: Ev Sahibi ${evSahibiCeyrekSkoru} - Konuk Takım ${konukTakimCeyrekSkoru}`
+    );
+  }
+
+  // Maçın berabere bitip bitmediği kontrol edildi.
+  if (toplamEvSahibiSkoru === toplamKonukTakimSkoru) {
+    // Maç berabere bitti, bir uzatma oynanacak
+    toplamEvSahibiSkoru += takimSkoru;
+    toplamKonukTakimSkoru += takimSkoru;
+  }
+
+  // Maç sonucunu hesaplayın ve sonuçlar dizisine ekleyin
+  sonuclar.push(
+    `Maç Sonucu: Ev Sahibi ${toplamEvSahibiSkoru} - Konuk Takım ${toplamKonukTakimSkoru}`
+  );
+
+  // Sonuçları döndürün
+  return sonuclar;
 }
 
 
