@@ -80,10 +80,10 @@ Aşağıdaki takimSkoru() fonksiyonununda aşağıdakileri yapınız:
 Not: Bu fonskiyon, aşağıdaki diğer görevler için de bir callback fonksiyonu olarak da kullanılacak
 */
 
-function takimSkoru(/*Kodunuzu buraya yazınız*/){
-    /*Kodunuzu buraya yazınız*/
+function takimSkoru(){
+    return Math.floor(Math.random()*(25-10+1)+10);
 }
-
+console.log(takimSkoru());
 
 
 
@@ -102,10 +102,20 @@ Aşağıdaki macSonucu() fonksiyonununda aşağıdakileri yapınız:
 }
 */ 
 
-function macSonucu(/*Kodunuzu buraya yazınız*/){
-  /*Kodunuzu buraya yazınız*/
+function macSonucu(callback,period){
+  let macSonuc = {};
+  let evSahibiSkor = 0;
+  let KonukTakimSkor= 0;
+  for (let i = 0; i < period; i++) {
+    evSahibiSkor += callback()
+    KonukTakimSkor += callback()
+  }
+  
+  macSonuc.EvSahibi = evSahibiSkor
+  macSonuc.KonukTakim = KonukTakimSkor
+  return macSonuc
 }
-
+ console.log(macSonucu(takimSkoru,4))
 
 
 
@@ -125,10 +135,21 @@ Aşağıdaki periyotSkoru() fonksiyonununda aşağıdakileri yapınız:
   */
 
 
-function periyotSkoru(/*Kodunuzu buraya yazınız*/) {
-  /*Kodunuzu buraya yazınız*/
+function periyotSkoru(callback4) {
+  let skor = {
+    EvSahibi : callback4(),
+    KonukTakim : callback4(), 
+  };
+
+  return skor;
 
 }
+console.log(periyotSkoru(takimSkoru));
+
+
+
+
+
 
 
 /* Zorlayıcı Görev 5: skorTabelasi() 
