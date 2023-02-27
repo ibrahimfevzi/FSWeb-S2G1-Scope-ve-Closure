@@ -30,10 +30,26 @@ console.log('örnek görev:', ilkiniDon(['as','sa'],function(metin){return metin
   Aşağıdaki skor1 ve skor2 kodlarını inceleyiniz ve aşağıdaki soruları altına not alarak cevaplayın
   
   1. skor1 ve skor2 arasındaki fark nedir?
+
+  skor1 closure kullanarak skor değerini private hale getirir ve bu closure ile skor değeri 
+  sadece skorGuncelle fonksiyonu aracılığıyla artırılabilir.
+  skor2 ise global bir skor değişkeni kullanarak skoru artırır.
   
   2. Hangisi bir closure kullanmaktadır? Nasıl tarif edebilirsin? (yarınki derste öğreneceksin :) )
   
+  skor1 bir closure kullanmaktadır. Closure, bir iç fonksiyonun, kapsayıcı bir fonksiyonun özelliklerine
+  ve değişkenlerine erişebildiği fonksiyonudur. skorArtirici fonksiyonu, içindeki skor değişkenini
+  ve skorGuncelle fonksiyonunu kapsayan bir closure döndürür.
+
+
   3. Hangi durumda skor1 tercih edilebilir? Hangi durumda skor2 daha mantıklıdır?
+  
+  Skor1, örneğin bir oyun gibi, bir uygulamanın farklı noktalarında skor takibi yapmak için daha uygun olabilir. 
+  Bu sayede, skor değişkenine sadece skorGuncelle fonksiyonu aracılığıyla erişilerek,
+  diğer kod parçaları tarafından yanlışlıkla değiştirilmesi engellenebilir.
+  Skor2, özellikle küçük ölçekli ve basit uygulamalar için kullanışlı olabilir. 
+  Örneğin, bir sayfada bir butona her tıklandığında skoru artırmak istiyorsak, bu skor2 fonksiyonunu kullanarak yapılabilir.
+
 */
 
 // skor1 kodları
